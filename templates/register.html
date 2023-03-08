@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+
+{% load crispy_forms_tags %}
+{% block body %}
+
+
+<form method = "post">
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+  <h3>Kayıt Ol</h3>
+  <hr>
+  {% csrf_token %}
+    {{form|crispy}}
+  {% if request.user.is_authenticated %}
+    <div class = "alert alert-danger">Bir Hesaba Sahipsiniz. Yeni Bir Hesap İçin Çıkış Yapın...</div>
+    {% else %}
+        <button type = "submit" class = "btn btn-danger">Kayıt Ol</button>
+    {% endif %}
+    
+    
+    </form>
+  </div>
+</div>
+  
+
+    
+
+</form>
+{% endblock body %}
+
